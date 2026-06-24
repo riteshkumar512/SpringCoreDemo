@@ -1,4 +1,13 @@
 package in.RiteshKumar.Payment;
 
-public class UpiPayment {
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+//@Qualifier("up")
+//@Component
+public class UpiPayment  implements  PaymentService{
+    @Override
+    public void pay(){
+        System.out.println("Payment by Upi");
+    }
 }

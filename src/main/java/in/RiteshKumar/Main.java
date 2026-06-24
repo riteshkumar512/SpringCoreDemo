@@ -1,17 +1,56 @@
 package in.RiteshKumar;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import in.kumar.CartService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        ApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
+
+        OrderService order=context.getBean(OrderService.class);
+        order.placeOrder();
+
+        User user=context.getBean(User.class);
+        System.out.println(user.getName());
+
+        CartService cart=context.getBean(CartService.class);
+        cart.cartAdded();
+
+//        CartService cart=new CartService();
+//        cart.cartAdded();
+
+
+//        PaymentService payment=context.getBean(PaymentService.class);
+//        payment.pay();
+
+//        Class<Student> c1= Student.class;
+
     }
+    /*
+    c1 store metadata of class Student:
+    Class name:Student
+    Fields: Name,age also its datatype
+    Constructor:Student
+    Methods:getAttendece() ,print()
+    Private member,public member
+    Annotation
+
+    */
+}
+
+
+
+class Student{
+    private String name;
+    private int age;
+
+    public Student(){}
+
+    public void getAttendence(){
+
+    }
+    public void print(){}
+
 }
